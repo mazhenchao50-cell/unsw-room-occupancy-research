@@ -1,0 +1,31 @@
+{
+  "task_version": "trial_v7_20261124",
+  "date": "2026-11-24",
+  "purpose": "评价第④项中的系统可用性：没有参与过本项目的人，能否独立完成课程复核与空教室候选两条主要流程，并正确理解结果的含义（低利用≠无人、候选≠已确认可用）。不评价真实教室可用性、传感器准确性或新校园有效性。",
+  "literature": [
+    "Nielsen & Landauer 1993（CHI）：小样本形成性可用性测试，约5名用户即可发现大部分主要可用性问题。",
+    "Brooke 1996, SUS: A quick and dirty usability scale：10题系统可用性量表，0–100分。",
+    "Bangor, Kortum & Miller 2008（IJHCI）：SUS大样本平均约68分，可作为“高于平均”的参照线。"
+  ],
+  "participants": {
+    "count": "5–8人；少于5人只报告观察结果，不判定是否通过。",
+    "eligibility": "未参与本项目开发与汇报准备的同学或教职员；本组成员不作参与者。",
+    "identity": "只用匿名编号P01、P02…；不记录姓名、学号、联系方式；录音录像不作要求。"
+  },
+  "procedure": "主持人按《试用执行指南》逐字读任务卡；参与者边做边说（出声思维）；主持人只在参与者明确求助或卡住超过2分钟时提示，提示即记assisted=true；每个任务完成后口头回答理解题，按评分标准编码；四个任务后填写SUS。每人约15–20分钟。",
+  "tasks": {
+    "T1": {"answer_code": "low_use_not_vacancy", "rubric": "能说出：低利用率提示是预测整节课峰值低于座位10%（常见于课表有但未实际上课），不等于教室现在没人，也不代表可以进入或使用。"},
+    "T2": {"answer_code": "review_not_decision", "rubric": "能说出：导出的复核记录只是需要人工核实的线索，不能直接作为取消课程或释放教室的依据。"},
+    "T3": {"answer_code": "candidate_needs_verification", "rubric": "能说出：候选不等于已确认空闲，依据是课表在该时段没有课、且过去同一时段很少被自发占用；仍需现场或管理方核实。"},
+    "T4": {"answer_code": "adjust_to_later", "rubric": "能说出系统建议的稍晚开始时刻（16:00），并理解原时段没有候选不代表所有教室都有人。"}
+  },
+  "outcomes": "每个任务记录：outcome（completed/failed/abandoned）、duration_seconds（从读完任务卡到参与者说“完成”或放弃）、assisted（true/false）、answer_code（正确编码/incorrect/no_answer）。另记参与者原话与发现的问题。",
+  "success_criteria": {
+    "min_participants": 5,
+    "overall_independent_correct_rate": 0.80,
+    "per_task_independent_correct_rate": 0.60,
+    "mean_sus": 68,
+    "definition": "独立正确完成=outcome为completed、assisted为false且answer_code正确。三条同时满足才写“④的可用性试用通过”；否则如实写未通过，修改界面后以新版本、新参与者重测，新旧版本分开汇总。"
+  },
+  "freeze_rule": "第一位参与者开始前冻结本文件（哈希写入汇总）。试用开始后不得修改任务、评分标准或通过标准。"
+}

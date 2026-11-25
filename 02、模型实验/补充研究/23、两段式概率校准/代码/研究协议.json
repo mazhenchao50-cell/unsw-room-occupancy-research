@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-24",
+  "context": "正式unified_v6的两段式均值E=p·m0+(1−p)·m1中，p是原低利用分类器（逻辑回归与浅层LightGBM概率等权平均）的分数，从未校准，却被当作“课次不正常开课的概率”使用。若p系统性偏高或偏低，E会被整体拉偏（实验16在2018年观察到p平均0.147而当年无低利用课次）。本实验检验：用只来自更早数据的样本外分数校准p，能否改善p的概率质量和第①项所用的E。",
+  "literature": [
+    "Platt 1999, Probabilistic outputs for support vector machines and comparisons to regularized likelihood methods：对分类分数做单调逻辑变换得到概率（Platt缩放）。",
+    "Zadrozny & Elkan 2002, KDD, Transforming classifier scores into accurate multiclass probability estimates：保序回归校准。",
+    "Niculescu-Mizil & Caruana 2005, ICML, Predicting good probabilities with supervised learning：提升树等模型的分数需要校准；校准样本较少（约1000条以下）时保序回归易过拟合，Platt缩放更稳。",
+    "Duan et al. 1983 / Mullahy 1986：两段式（hurdle）模型的期望值由第一段概率加权，第一段概率的校准直接影响期望值。"
+  ],
+  "calibration_data": "按时间前推产生样本外分数：对每个教学周w（第4周起，排除第9周），只用第w周之前的课次以正式stable_low配方（固定参数、阈值0.50不变）拟合分类器，对第w周全部课次打分。测试周t的校准器只使用w<t的这些样本外分数与标签。若某周拟合因单一类别或拟合警告失败，跳过该周并记录。",
+  "methods": {
+    "primary": "Platt缩放：以logit(p)（p截到[1e-6, 1−1e-6]）为唯一输入的逻辑回归（lbfgs，C=1e6即近似不惩罚）。",
+    "sensitivity": "保序回归（out_of_bounds=clip，取值[0,1]）。只作敏感性报告，本次不参与采用。"
+  },
+  "application": "测试周t：正式rolling_t模型的原始分数p（time_predictions.csv的low_probability）经该周校准器变换为p_cal；m0、m1取正式模型保存值（bundle['low_mean']与held_prediction），E_cal=p_cal·m0+(1−p_cal)·m1。低利用提示规则（原分数≥0.50、情境多数决、公共假日）不变，因此②与显示占用率不变；③不涉及。",
+  "evaluation": {
+    "test_weeks": [8, 10, 11, 12],
+    "probability_quality": "Brier分数、对数损失、10等宽分箱ECE、平均p与实际低利用比例之差；逐周与四周合并。",
+    "regression": "两段式均值RMSE（原p、Platt、保序）逐周与合并；第①项两条基线按同等信息口径（测试周之前全部周）计算改善率。",
+    "uncertainty": "合并RMSE差（Platt−原始）按课程聚类自助法2000次（seed=42）给95%区间；只有区间不含0时才写“显著”。",
+    "consistency": "用正式保存的p、m0、m1重算的原始E须与time_predictions.csv的prediction逐条一致（容差1e-12）。"
+  },
+  "adoption": "Platt缩放同时满足以下四条 → 接入正式模型（unified_v7，两段式均值改用校准后的p，提示规则不变）：(a)四周合并Brier低于原始p；(b)四周合并两段式均值RMSE不高于原始；(c)任何一周RMSE比原始变差不超过0.002；(d)四周每周第①项两条基线改善均≥10%。任一条不满足 → 不采用，如实记录。保序回归不参与采用。",
+  "holdout": "2018学期（实验16）已作一次性验证，本实验不再使用，避免保留集重复使用；且2018发布表没有低利用课次，2017数据无法学习这种先验变化。",
+  "scope": "首次运行；不调参、不增删方法、不改评估周与采用条件。四个评估周此前已查看，属回顾性研究。"
+}

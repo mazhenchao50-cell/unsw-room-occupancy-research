@@ -1,0 +1,21 @@
+{
+  "frozen_before_joint_rule_evaluation": true,
+  "scope": "UNSW historical sessions; all 815 four-week observations retained; regression and spatial rules unchanged",
+  "primary": "Use the existing fixed equal-probability logistic regression and shallow LightGBM ensemble with recent history. Keep probability threshold exactly 0.50 in all weeks. Additionally flag scheduled sessions on independently verified NSW statewide public holidays in the documented dataset date window for low-utilization review.",
+  "calendar": {
+    "verified_window": ["2017-07-24", "2017-10-20"],
+    "statewide_public_holidays": ["2017-10-02"],
+    "excluded_bank_only_holiday": "2017-08-07",
+    "sources": [
+      "https://www.coursearchive.unsw.edu.au/documents/precool/TABL2751_Business_Taxation_S2_2017.pdf",
+      "https://files.parliament.nsw.gov.au/fileapi/ParlFiles/GetArtifact/2017%20Sitting%20calendar.pdf?serverRelativeUrl=%2Ftp%2Ffiles%2F69484%2F2017+Sitting+calendar.pdf"
+    ],
+    "local_originals": "D:/ProjectTools/UNSW_CalendarEvidence_20261117",
+    "sha256": {
+      "UNSW_TABL2751_2017.pdf": "3f52137095e5bec42a70dfc9ac01611cb401391436904744f24e4020f4233933",
+      "NSW_Parliament_2017_Calendar.pdf": "c2e111f8f8a32bf35a884a6a8863a37a1267fec5ad9a9384b81eb44f65c8bc49"
+    }
+  },
+  "adoption": "week12 FN<=25; pooled P>=0.65 and R>=0.60; all four weeks satisfy original criterion 2 and recall>=0.50; first three original gates remain; full fresh fitting and all tests required",
+  "disclosure": "Calendar review is a deterministic pre-class context rule, not a classifier probability or verified vacancy/cancellation. The fixed-threshold ablation and week10 date errors were examined before this hypothesis; this is retrospective model development, not blind validation. Keep classifier-only and combined results distinct. Do not relabel, delete sessions, or clamp regression predictions to zero on holidays."
+}

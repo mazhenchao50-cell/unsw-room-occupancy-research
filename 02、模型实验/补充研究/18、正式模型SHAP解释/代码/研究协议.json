@@ -1,0 +1,11 @@
+{
+  "date": "2026-11-24",
+  "question": "计划书④要求“SHAP结果符合领域常识”。正式模型unified_v6（第12周折）的两段：条件回归m1与低利用分类器（树模型部分）依赖哪些特征？方向是否符合预期？",
+  "method": "加载正式fold_models/rolling_12.joblib（不重训）。m1：shap.TreeExplainer作用于bundle['cond']的LightGBM，输入为第12周206条的正式特征（R.raw_features，以bundle中位数填补）。分类器：TreeExplainer作用于bundle['low']['trees']（浅层LightGBM），输入为stable_low.features。全局重要度=平均|SHAP|；方向=特征值与该特征SHAP值的Spearman相关符号。",
+  "expected_directions": {
+    "m1": {"course_hist_mean": "+（课程以往占用越高，本次越高）", "enrollments": "+（报名越多，人越多）", "seats": "−（同样人数下座位越多占用率越低）"},
+    "classifier_low_probability": {"course_recent_low3": "+（最近三次低利用比例越高，本次越可能低利用）", "course_last_rate": "−（上次占用越高，越不可能低利用）", "days_since_course": "+（距上次课越久，越可能已停课）"}
+  },
+  "claim_rule": "逐项报告预期方向是否一致；不一致的如实列出并分析，不删除或改写特征。",
+  "scope": "解释已冻结模型，不改变任何预测。"
+}

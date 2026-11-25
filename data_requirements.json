@@ -1,0 +1,58 @@
+[
+  {
+    "file": "2017_sem2_attendance_data.csv",
+    "sha256": "81d4f0fca96c99b3543619c279d850d4539a32b6294547a016808748b7e868ff"
+  },
+  {
+    "file": "2018_sem2_attendance_data.csv",
+    "sha256": "8bcf7c6bf2b495c69455a85f4c2906e3a1f8dcd2048aa4fb9b4ac6e7855c6214"
+  },
+  {
+    "file": "week10_computed_data.csv",
+    "sha256": "b6874afe1eac9a7951dd0ac9f79fda0e1f3701d8a16ab2cb66b16975c0b855f9"
+  },
+  {
+    "file": "week11_computed_data.csv",
+    "sha256": "0013ece36ade63d53256a2e1cdaf9e3148c63885a5cf5b6f0c197b88bbed84a0"
+  },
+  {
+    "file": "week12_computed_data.csv",
+    "sha256": "dbc8c09bfc510c80454a62b329980561154b8be41243f27e2ab78f5abf3a13a5"
+  },
+  {
+    "file": "week1_computed_data.csv",
+    "sha256": "4043cc57068366c8fbb07d271fac5430fa007e6c2a43290d9c2cf9eb49fed479"
+  },
+  {
+    "file": "week2_computed_data.csv",
+    "sha256": "0f8ac7d5819695882efc30408810301706d3066cd26f7f2a828915c7cb3b06e6"
+  },
+  {
+    "file": "week3_computed_data.csv",
+    "sha256": "01db2183c786c3c0b128a597dae0b6a41a7c787aee3048ca80686c7fc5b2b6dd"
+  },
+  {
+    "file": "week4_computed_data.csv",
+    "sha256": "e8d06e95faea46cd4fa3982d9f422599245d4058229a46c41fe2aa688755cf92"
+  },
+  {
+    "file": "week5_computed_data.csv",
+    "sha256": "c22acf502611f2e438ef9de086dc970bf2aaf553fec5166a4a07adc44cda2a45"
+  },
+  {
+    "file": "week6_computed_data.csv",
+    "sha256": "534f48e7ba88ea7f97d94156266ba17e654d73aa6de327e61723023a318e8d06"
+  },
+  {
+    "file": "week7_computed_data.csv",
+    "sha256": "b4a86e8080b96ef8bb88b20d40db10277e509eb73a7add74cc56f6133819ec83"
+  },
+  {
+    "file": "week8_computed_data.csv",
+    "sha256": "660e5ace9f8c9c1676c18fe77b3cf67eaa01a22a08a9405876751719bb6ecdb0"
+  },
+  {
+    "file": "week9_computed_data.csv",
+    "sha256": "f81c40cfd8c4cb419fc580afab84f63708793d7f309901a44e21bd55d7c6b2ef"
+  }
+]

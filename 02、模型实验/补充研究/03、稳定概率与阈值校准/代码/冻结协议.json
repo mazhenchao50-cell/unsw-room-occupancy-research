@@ -1,0 +1,11 @@
+{
+  "frozen_before_this_policy_evaluation": true,
+  "scope": "UNSW historical research; original three criteria and session membership unchanged",
+  "hypothesis": "Worst-week F1 calibration overreacted to a poor earlier week and produced too many alerts. Use the fixed equal-weight logistic and shallow LightGBM ensemble already fitted strictly forward, then constrain precision and threshold movement.",
+  "model": "Existing fixed recent-history ensemble; no re-selection of model family per outer week",
+  "policy": "Initialize threshold at 0.50. For each later observed week use the preceding three prequential weeks; eligible thresholds require pooled precision >=0.70, at least 20 alerts, and each calibration-week precision >=0.50. Maximize pooled recall, then F1, then higher threshold. If none qualify, use 0.50. Limit movement to 0.10 per forecast week.",
+  "threshold_grid": [0.30,0.35,0.40,0.45,0.50,0.55,0.60],
+  "outer_weeks": [8,10,11,12],
+  "adoption": "week12 FN<=25; pooled P>=0.65 and R>=0.60; all four weeks satisfy original criterion 2 and recall>=0.50; original regression and spatial behavior unchanged; fresh fit and complete tests required",
+  "boundary": "Previously examined data. This tests a new retrospective hypothesis, not a new blind test. Do not change this policy based on its outer results; retain a failed result in the whitepapers."
+}

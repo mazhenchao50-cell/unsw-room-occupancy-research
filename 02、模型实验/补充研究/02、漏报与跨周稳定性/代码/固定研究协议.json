@@ -1,0 +1,11 @@
+{
+  "fixed_before_candidate_results": true,
+  "primary_method": "Equal-probability ensemble of fixed logistic regression and fixed shallow LightGBM; recent course and room history; maximize the worst calibration-week F1 across up to three prior prequential weeks, then mean F1, pooled precision and higher threshold.",
+  "model_parameters": {"logistic_C": 1.0, "logistic_class_weight": null, "lgbm_trees": 150, "lgbm_leaves": 7, "lgbm_min_child_samples": 30, "learning_rate": 0.05, "seed": 42},
+  "threshold_grid": [0.10,0.15,0.20,0.25,0.30,0.35,0.40,0.45,0.50,0.55,0.60,0.65,0.70,0.75,0.80,0.85,0.90],
+  "evaluation_weeks": [8,10,11,12],
+  "calibration": "Weekly forward predictions on strictly earlier weeks only. Model parameters and blend weights are fixed. No query labels, same-week labels or test scores enter threshold choice.",
+  "diagnostic_ablations": ["fixed_0.5_threshold", "pooled_F1_calibration", "no_recent_history_features"],
+  "adoption_conditions": {"week12_false_negatives_max":25,"pooled_precision_min":0.65,"pooled_recall_min":0.60,"every_week_original_criterion_2":true,"every_week_recall_min":0.50,"regression_and_spatial_rules_unchanged":true},
+  "interpretation": "These are improvement checks beyond the original numeric gates, not universal business cost thresholds. If unmet, do not silently relax them or replace the current model. All weeks were previously inspected: retrospective robustness evidence, not independent future validation."
+}

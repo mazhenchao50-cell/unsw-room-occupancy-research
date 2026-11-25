@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "verified_on": "2026-11-20",
+  "scope": "UNSW历史数据研究",
+  "enrollment_semantics_verified": true,
+  "original_predictive_use_verified": true,
+  "csv_value_capture_time_verified": false,
+  "summary": "报名人数已有原作者定义和预测使用依据，保留用于UNSW历史研究。公开CSV逐值取得时间尚未核实，不据此断言发生泄漏或已经完成实际课前验证。",
+  "input_mapping": {
+    "formal_feature": "computed.NumEnrollments -> sessions.enrollments",
+    "comparison_only": "attendance.enrollment -> sessions.enroll_sched",
+    "relation": "均来自官方数据包；差异未解释前不能互作校验真值"
+  },
+  "attendance_definition": "原论文以课堂期间占用峰值形成课堂attendance；两张公开表的逐课次差异原因尚未解释。",
+  "sources": [
+    {
+      "title": "Experiences with IoT and AI in a Smart Campus for Optimizing Classroom Usage",
+      "url": "https://www2.ee.unsw.edu.au/~vijay/pubs/jrnl/19IoTJ.pdf",
+      "locator": "PDF第6页IV-A；第7页V与V-A",
+      "sha256": "fbddec420e40448a73cf23111faf8cdc880a0452f6c373335c48bbc7586e3f44"
+    },
+    {
+      "title": "Demo Abstract: A Tool to Access and Visualize Classroom Attendance Data from a Smart Campus",
+      "url": "https://www2.ee.unsw.edu.au/~hhabibi/pubs/conf/18ipsn_demo.pdf",
+      "locator": "PDF第1至2页第2与第3节",
+      "sha256": "b74c294ea2d0e6e16928f47c3f8eac3754860e4e595771345ab79153a09b882c"
+    },
+    {
+      "title": "UNSW Glossary of Terms for Course & Class Maintenance",
+      "url": "https://my.unsw.edu.au/help/STA/courseClassGlossary.html",
+      "locator": "Enrolments；Capacity；Meeting Room Capacity",
+      "sha256": "8140a0e4fe6616352a391da9fd667016942a0af37e346fccc51ba8b208776a9f"
+    }
+  ]
+}
